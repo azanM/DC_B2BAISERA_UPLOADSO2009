@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CUSTOM_LOG" EntityType="Model.Store.CUSTOM_LOG" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_S02009_HS" EntityType="Model.Store.CUSTOM_S02009_HS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_S02009_IS" EntityType="Model.Store.CUSTOM_S02009_IS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_S02009_TEMP_HS" EntityType="Model.Store.CUSTOM_S02009_TEMP_HS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_S02009_TEMP_IS" EntityType="Model.Store.CUSTOM_S02009_TEMP_IS" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_TRANSACTION" EntityType="Model.Store.CUSTOM_TRANSACTION" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_TRANSACTIONDATA" EntityType="Model.Store.CUSTOM_TRANSACTIONDATA" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_TRANSACTIONDATADETAIL" EntityType="Model.Store.CUSTOM_TRANSACTIONDATADETAIL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CUSTOM_USER" EntityType="Model.Store.CUSTOM_USER" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_CUSTOM_TRANSACTION" Association="Model.Store.FK_CUSTOM_TRANSACTION">
+      <End Role="CUSTOM_TRANSACTION" EntitySet="CUSTOM_TRANSACTION" />
+      <End Role="CUSTOM_TRANSACTIONDATA" EntitySet="CUSTOM_TRANSACTIONDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOM_TRANSACTIONDATA" Association="Model.Store.FK_CUSTOM_TRANSACTIONDATA">
+      <End Role="CUSTOM_TRANSACTIONDATA" EntitySet="CUSTOM_TRANSACTIONDATA" />
+      <End Role="CUSTOM_TRANSACTIONDATADETAIL" EntitySet="CUSTOM_TRANSACTIONDATADETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOM_TRANSACTIONDATA09_HS" Association="Model.Store.FK_CUSTOM_TRANSACTIONDATA09_HS">
+      <End Role="CUSTOM_TRANSACTIONDATA" EntitySet="CUSTOM_TRANSACTIONDATA" />
+      <End Role="CUSTOM_S02009_HS" EntitySet="CUSTOM_S02009_HS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOM_TRANSACTIONDATA09_IS" Association="Model.Store.FK_CUSTOM_TRANSACTIONDATA09_IS">
+      <End Role="CUSTOM_TRANSACTIONDATA" EntitySet="CUSTOM_TRANSACTIONDATA" />
+      <End Role="CUSTOM_S02009_IS" EntitySet="CUSTOM_S02009_IS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOM_TRANSACTIONDATA09_TEMP_HS" Association="Model.Store.FK_CUSTOM_TRANSACTIONDATA09_TEMP_HS">
+      <End Role="CUSTOM_TRANSACTIONDATA" EntitySet="CUSTOM_TRANSACTIONDATA" />
+      <End Role="CUSTOM_S02009_TEMP_HS" EntitySet="CUSTOM_S02009_TEMP_HS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CUSTOM_TRANSACTIONDATA09TEMP_IS" Association="Model.Store.FK_CUSTOM_TRANSACTIONDATA09TEMP_IS">
+      <End Role="CUSTOM_TRANSACTIONDATA" EntitySet="CUSTOM_TRANSACTIONDATA" />
+      <End Role="CUSTOM_S02009_TEMP_IS" EntitySet="CUSTOM_S02009_TEMP_IS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CUSTOM_LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WebServiceName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="MethodName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Acknowledge" Type="bit" Nullable="false" />
+    <Property Name="TicketNo" Type="varchar" MaxLength="1000" />
+    <Property Name="Message" Type="varchar" MaxLength="200" />
+    <Property Name="FileType" Type="varchar" MaxLength="10" />
+    <Property Name="CreatedWho" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreatedWhen" Type="datetime" Nullable="false" />
+    <Property Name="ChangedWho" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ChangedWhen" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTOM_S02009_HS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDataID" Type="int" />
+    <Property Name="PONumber" Type="varchar" MaxLength="50" />
+    <Property Name="VersionPOSERA" Type="decimal" />
+    <Property Name="DataVersion" Type="decimal" />
+    <Property Name="dibuatOleh" Type="varchar" MaxLength="50" />
+    <Property Name="dibuatTanggal" Type="datetime" />
+    <Property Name="diubahOleh" Type="varchar" MaxLength="50" />
+    <Property Name="diubahTanggal" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTOM_S02009_IS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDataID" Type="int" />
+    <Property Name="PONumber" Type="varchar" MaxLength="50" />
+    <Property Name="VersionPOSERA" Type="decimal" />
+    <Property Name="DataVersionAI" Type="decimal" />
+    <Property Name="ChassisNumberByVendor" Type="varchar" MaxLength="18" />
+    <Property Name="TGLGRSAP" Type="datetime" />
+    <Property Name="dibuatOleh" Type="varchar" MaxLength="50" />
+    <Property Name="dibuatTanggal" Type="datetime" />
+    <Property Name="diubahOleh" Type="varchar" MaxLength="50" />
+    <Property Name="diubahTanggal" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTOM_S02009_TEMP_HS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDataID" Type="int" />
+    <Property Name="PONumber" Type="varchar" MaxLength="50" />
+    <Property Name="VersionPOSERA" Type="decimal" />
+    <Property Name="DataVersion" Type="decimal" />
+    <Property Name="CompanyCodeAI" Type="varchar" MaxLength="5" />
+    <Property Name="KodeCabangAI" Type="varchar" MaxLength="4" />
+    <Property Name="dibuatOleh" Type="varchar" MaxLength="50" />
+    <Property Name="dibuatTanggal" Type="datetime" />
+    <Property Name="diubahOleh" Type="varchar" MaxLength="50" />
+    <Property Name="diubahTanggal" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTOM_S02009_TEMP_IS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDataID" Type="int" />
+    <Property Name="PONumber" Type="varchar" MaxLength="50" />
+    <Property Name="VersionPOSERA" Type="decimal" />
+    <Property Name="DataVersionAI" Type="decimal" />
+    <Property Name="ChassisNumberByVendor" Type="varchar" MaxLength="18" />
+    <Property Name="TGLGRSAP" Type="datetime" />
+    <Property Name="dibuatOleh" Type="varchar" MaxLength="50" />
+    <Property Name="dibuatTanggal" Type="datetime" />
+    <Property Name="diubahOleh" Type="varchar" MaxLength="50" />
+    <Property Name="diubahTanggal" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTOM_TRANSACTION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Acknowledge" Type="bit" />
+    <Property Name="TicketNo" Type="varchar" MaxLength="1000" />
+    <Property Name="Message" Type="varchar" MaxLength="1000" />
+    <Property Name="ClientTag" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedWho" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedWhen" Type="datetime" />
+    <Property Name="ChangedWho" Type="varchar" MaxLength="50" />
+    <Property Name="ChangedWhen" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTOM_TRANSACTIONDATA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="TransGUID" Type="varchar" MaxLength="40" />
+    <Property Name="DocumentNumber" Type="varchar" MaxLength="30" />
+    <Property Name="FileType" Type="varchar" MaxLength="20" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="15" />
+    <Property Name="DestinationUser" Type="varchar" MaxLength="10" />
+    <Property Name="Key1" Type="varchar" MaxLength="20" />
+    <Property Name="Key2" Type="varchar" MaxLength="20" />
+    <Property Name="Key3" Type="varchar" MaxLength="20" />
+    <Property Name="DataLength" Type="int" />
+    <Property Name="RowStatus" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedWho" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedWhen" Type="datetime" />
+    <Property Name="ChangedWho" Type="varchar" MaxLength="50" />
+    <Property Name="ChangedWhen" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTOM_TRANSACTIONDATADETAIL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TransactionDataID" Type="int" Nullable="false" />
+    <Property Name="Data" Type="varchar" MaxLength="2000" />
+    <Property Name="dibuatOleh" Type="varchar" MaxLength="50" />
+    <Property Name="dibuatTanggal" Type="datetime" />
+    <Property Name="diubahOleh" Type="varchar" MaxLength="50" />
+    <Property Name="diubahTanggal" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CUSTOM_USER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="varchar" MaxLength="200" />
+    <Property Name="Password" Type="varchar" MaxLength="200" />
+    <Property Name="UserCode" Type="varchar" MaxLength="200" />
+    <Property Name="PassCode" Type="varchar" MaxLength="200" />
+    <Property Name="ClientTag" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_CUSTOM_TRANSACTION">
+    <End Role="CUSTOM_TRANSACTION" Type="Model.Store.CUSTOM_TRANSACTION" Multiplicity="1" />
+    <End Role="CUSTOM_TRANSACTIONDATA" Type="Model.Store.CUSTOM_TRANSACTIONDATA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOM_TRANSACTION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CUSTOM_TRANSACTIONDATA">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOM_TRANSACTIONDATA">
+    <End Role="CUSTOM_TRANSACTIONDATA" Type="Model.Store.CUSTOM_TRANSACTIONDATA" Multiplicity="1" />
+    <End Role="CUSTOM_TRANSACTIONDATADETAIL" Type="Model.Store.CUSTOM_TRANSACTIONDATADETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOM_TRANSACTIONDATA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CUSTOM_TRANSACTIONDATADETAIL">
+        <PropertyRef Name="TransactionDataID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOM_TRANSACTIONDATA09_HS">
+    <End Role="CUSTOM_TRANSACTIONDATA" Type="Model.Store.CUSTOM_TRANSACTIONDATA" Multiplicity="0..1" />
+    <End Role="CUSTOM_S02009_HS" Type="Model.Store.CUSTOM_S02009_HS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOM_TRANSACTIONDATA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CUSTOM_S02009_HS">
+        <PropertyRef Name="TransactionDataID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOM_TRANSACTIONDATA09_IS">
+    <End Role="CUSTOM_TRANSACTIONDATA" Type="Model.Store.CUSTOM_TRANSACTIONDATA" Multiplicity="0..1" />
+    <End Role="CUSTOM_S02009_IS" Type="Model.Store.CUSTOM_S02009_IS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOM_TRANSACTIONDATA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CUSTOM_S02009_IS">
+        <PropertyRef Name="TransactionDataID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOM_TRANSACTIONDATA09_TEMP_HS">
+    <End Role="CUSTOM_TRANSACTIONDATA" Type="Model.Store.CUSTOM_TRANSACTIONDATA" Multiplicity="0..1" />
+    <End Role="CUSTOM_S02009_TEMP_HS" Type="Model.Store.CUSTOM_S02009_TEMP_HS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOM_TRANSACTIONDATA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CUSTOM_S02009_TEMP_HS">
+        <PropertyRef Name="TransactionDataID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CUSTOM_TRANSACTIONDATA09TEMP_IS">
+    <End Role="CUSTOM_TRANSACTIONDATA" Type="Model.Store.CUSTOM_TRANSACTIONDATA" Multiplicity="0..1" />
+    <End Role="CUSTOM_S02009_TEMP_IS" Type="Model.Store.CUSTOM_S02009_TEMP_IS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOM_TRANSACTIONDATA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CUSTOM_S02009_TEMP_IS">
+        <PropertyRef Name="TransactionDataID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_CreatePOSeraS02009ToAI_HS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_CreatePOSeras02009ToAI_IS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DeleteAllTempHSISS02009" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DeleteTempHS_s02009" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PONUMBER" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_DeleteTemps02009IS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PONUMBER" Type="varchar" Mode="In" />
+  </Function>
+</Schema>
